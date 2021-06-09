@@ -18,11 +18,14 @@ client = commands.Bot(command_prefix='!',intents=intents)
 
 init_commands(client)
 
-init_events(client)
-
 @client.event
 async def on_ready():
     print("Ready!")
+
+@client.event
+async def on_message(message):
+    await client.process_commands(message)
+    await on_messageEvent(message)
 
 client.run(TOKEN)
 
