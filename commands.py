@@ -1,8 +1,6 @@
 import os
 import discord
 import requests
-import urllib
-import re
 from asyncio import *
 
 def init_commands(client):
