@@ -1,13 +1,14 @@
 from dotenv import load_dotenv
 import os
+
 import discord
 import ast
 from discord.ext import commands
 from asyncio import *
-from commands import *
 from events import *
 import requests
 import json
+from commands.__init__ import init_commands
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
