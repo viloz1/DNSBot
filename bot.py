@@ -1,14 +1,9 @@
 from dotenv import load_dotenv
 import os
 
-import discord
-import ast
-from discord.ext import commands
-from asyncio import *
-from events import *
-import requests
-import json
 from commands.__init__ import init_commands
+from events.__init__ import *
+import discord
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -18,15 +13,7 @@ intents.members = True
 client = commands.Bot(command_prefix='!',intents=intents)
 
 init_commands(client)
-
-@client.event
-async def on_ready():
-    print("Ready!")
-
-@client.event
-async def on_message(message):
-    await client.process_commands(message)
-    await on_messageEvent(message)
+client.add_cog(Events(client))
 
 client.run(TOKEN)
 
