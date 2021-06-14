@@ -1,6 +1,6 @@
 import discord
 
-from events.onMessageEvents.skoj import *
+from events.onMessageEvents.random import *
 from events.onMessageEvents.anonymousMsg import *
 
 async def on_message_handler(message,client):
@@ -8,7 +8,7 @@ async def on_message_handler(message,client):
         return
 
     DB_PATH = os.getenv("DB_PATH")
-    f = open(DB_PATH + "\config.json")
+    f = open(DB_PATH + "/config.json")
     config = json.load(f)
     f.close()
 
@@ -20,4 +20,4 @@ async def on_message_handler(message,client):
         await anonymousAnsw(message, client)
         return
 
-    await skoj(message)
+    await random(message)
