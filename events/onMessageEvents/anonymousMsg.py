@@ -2,7 +2,7 @@ import json
 import os
 import hashlib
 
-async def anonymousMsg(message, client):
+async def anonymousMsg(message, client, channelID):
     DB_PATH = os.getenv('DB_PATH')
 
     content = message.content
@@ -12,10 +12,6 @@ async def anonymousMsg(message, client):
     data = json.load(f)
     f.close()
 
-    f = open(DB_PATH + "/config.json")
-    config = json.load(f)
-    f.close()
-
     unique_id = 0
     try:
         unique_id = data[str(author_id)]
@@ -23,14 +19,14 @@ async def anonymousMsg(message, client):
         unique_id = hashlib.sha256(str(author_id).encode('ASCII')).hexdigest()
         data.update({str(author_id): unique_id})
 
-    channel = client.get_channel(int(config["channels"]["anonymous_messages"]))
+    channel = client.get_channel(int(channelID))
     await channel.send("**Unique_ID: " + str(unique_id) + " **\n \n" + content)
 
     with open(DB_PATH + "/senders.json", 'w') as outfile:
         json.dump(data, outfile)
 
 
-async def anonymousAnsw(message, client):
+async def anonymousAnsw(message, client, channelID):
     if message.reference is None:
         return
 
@@ -40,7 +36,7 @@ async def anonymousAnsw(message, client):
     config = json.load(f)
     f.close()
 
-    message_sent = await client.get_channel(config["channels"]["anonymous_messages"]).fetch_message(message.reference.message_id)
+    message_sent = await client.get_channel(channelID).fetch_message(message.reference.message_id)
     unique_id = message_sent.content.split(" ")[1]
 
     f = open(DB_PATH + "/senders.json")

@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
-from commands.helpers import retrieveCourse
+from command.helpers import retrieveCourse
 
-@commands.command()
+
 async def stats(ctx, course):
     json = retrieveCourse(course)
     if len(json) == 0:
@@ -30,6 +30,6 @@ async def stats(ctx, course):
     embedVar = discord.Embed(title="Statistik", description=course.upper(), color=0xfa6607)
     embedVar.add_field(name="Failrate", value="Den genomsnittliga failraten ligger på: **" + str(
         round(rate, 2)) + "%**.", inline=False)
-    embedVar.add_field(name="Senaste ordinarie tentan", value="Tentan " + entry.get('date') + " hade följande betygsfördelning: \n**U**: " + str(u) + "\n" +
-                                 "**3**: " + str(three) + "\n" + "**4**: " + str(four) + "\n" + "**5**: " + str(five), inline=False)
+    embedVar.add_field(name="Senaste ordinarie tentan", value="Tentan " + entry.get('date') + " hade följande betygsfördelning: \n**U**: " + str(u) + "\n**3**: "
+                                                              + str(three) + "\n" + "**4**: " + str(four) + "\n**5**: " + str(five), inline=False)
     await ctx.channel.send(embed=embedVar)

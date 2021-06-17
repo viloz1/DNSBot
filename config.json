@@ -1,0 +1,19 @@
+{
+  "prod": {
+    "token": "TOKEN_PROD",
+    "channels": {
+      "anonymous_message": 854054900126974022
+    }
+  },
+  "test": {
+    "token": "TOKEN_TEST",
+    "channels": {
+      "anonymous_message": 853999731205079071
+    }
+  },
+  "dependencies" : {
+    "python-dotenv" : ">=0.15.0",
+    "discord" : ">=1.0.1",
+    "requests" : ">=2.25.1"
+  }
+}

@@ -3,21 +3,18 @@ import discord
 from events.onMessageEvents.random import *
 from events.onMessageEvents.anonymousMsg import *
 
-async def on_message_handler(message,client):
+async def on_message_handler(config, message,client):
+
     if message.author == client.user:
         return
 
-    DB_PATH = os.getenv("DB_PATH")
-    f = open(DB_PATH + "/config.json")
-    config = json.load(f)
-    f.close()
-
     if isinstance(message.channel, discord.channel.DMChannel):
-        await anonymousMsg(message, client)
+        await anonymousMsg(message, client, config["channels"]["anonymous_message"])
         return
 
-    if message.channel.id == config["channels"]["anonymous_messages"]:
-        await anonymousAnsw(message, client)
+    if message.channel.id == config["channels"]["anonymous_message"]:
+        await anonymousAnsw(message, client, config["channels"]["anonymous_message"])
         return
 
     await random(message)
+
