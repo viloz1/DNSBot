@@ -13,10 +13,6 @@ def main(type):
     config = json.load(f)
     f.close()
 
-    print(config["dependencies"])
-    for key, value in config["dependencies"].items():
-            subprocess.run(["pip","install", key+value])
-
     load_dotenv()
     TOKEN = os.getenv(config[type]["token"])
 
