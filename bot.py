@@ -6,16 +6,13 @@ import subprocess
 
 from command.__init__ import *
 from events.__init__ import *
+from command.music.__init__ import *
 import discord
 
 def main(type):
     f = open(os.path.abspath(os.getcwd()) + '/config.json')
     config = json.load(f)
     f.close()
-
-    print(config["dependencies"])
-    for key, value in config["dependencies"].items():
-            subprocess.run(["pip","install", key+value])
 
     load_dotenv()
     TOKEN = os.getenv(config[type]["token"])
@@ -26,8 +23,13 @@ def main(type):
 
     events = Events(client,config[type])
     command = Commands(client,config[type])
+    music = Music(client,config,{})
+
     client.add_cog(events)
     client.add_cog(command)
+    client.add_cog(music)
 
     client.run(TOKEN)
+
+main("prod")
 
