@@ -1,9 +1,4 @@
 from dotenv import load_dotenv
-import os
-import json
-import sys
-import subprocess
-
 from command.__init__ import *
 from events.__init__ import *
 from command.music.__init__ import *
@@ -31,5 +26,4 @@ def main(type):
 
     client.run(TOKEN)
 
-main("prod")
 
