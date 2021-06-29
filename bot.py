@@ -1,11 +1,7 @@
 from dotenv import load_dotenv
-import os
-import json
-import sys
-import subprocess
-
 from command.__init__ import *
 from events.__init__ import *
+from command.music.__init__ import *
 import discord
 
 def main(type):
@@ -22,8 +18,12 @@ def main(type):
 
     events = Events(client,config[type])
     command = Commands(client,config[type])
+    music = Music(client,config,{})
+
     client.add_cog(events)
     client.add_cog(command)
+    client.add_cog(music)
 
     client.run(TOKEN)
+
 
