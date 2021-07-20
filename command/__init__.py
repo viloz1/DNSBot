@@ -3,8 +3,9 @@ import command.random.seal
 from discord.ext import commands
 
 class Commands(commands.Cog):
-    def __init__(self, bot, config):
+    def __init__(self, bot, config, env):
         self.bot = bot
+        self.env = env
         self.config = config
 
     @commands.command()

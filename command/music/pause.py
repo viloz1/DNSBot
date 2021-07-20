@@ -6,3 +6,5 @@ async def pause(ctx,players):
             player.voiceClient.resume()
         else:
             player.voiceClient.pause()
+    else:
+        await ctx.channel.send("Hur har du tänkt att pausa något som inte finns?")
