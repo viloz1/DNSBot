@@ -26,6 +26,3 @@ def main(type):
     client.add_cog(music)
 
     client.run(TOKEN)
-
-
-main("prod")
