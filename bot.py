@@ -9,6 +9,7 @@ f = open(os.path.abspath(os.getcwd()) + '/config.json')
 config = json.load(f)
 f.close()
 
+#Ta in arg
 type = sys.argv[1]
 load_dotenv()
 ENV_VAR = os.environ
