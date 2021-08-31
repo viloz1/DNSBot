@@ -18,8 +18,7 @@ async def stats(ctx, course):
         total += failed + passed
     rate = totalfailrate / len(json)
 
-    for i in range(len(json) - 1, -1, -1):
-        entry = json[i]
+    for entry in json:
         u = entry.get('failed')
         three = entry.get('three')
         four = entry.get('four')
