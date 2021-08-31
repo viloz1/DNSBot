@@ -1,0 +1,30 @@
+882347149185130496
+Hello people, det är jag som är ***DNS boten***!
+
+Jag har en rad olika coola funktioner, check them out:
+
+----------------------------------------------------------------
+
+**Anonyma meddelanden**
+Om ni skickar ett privat meddelande till mig kommer jag att vidarebefordra meddelandet till DNS helt anonymt. DNS har även möjlighet att svara på ditt meddelande via mig. Ballt va?
+
+----------------------------------------------------------------
+
+**Kursspecifika kommandon**
+Hittills finns det inte så mycket här, men det är en WIP!
+`!stats <kurskod>` - Printar ut kul stats om en kurs given en kurskod, som till exempel failrate och statistik på senaste tentan.
+
+---------------------------------------------------------------
+
+**Musik**
+Jag är även kapabel till att spela musik!
+`!play <youtube_url>` - Spelar upp givna youtube URLn. Om en video redan spelas, läggs videon istället till på kön.
+`!skip <optional: nummmer>` - Hoppar över den nuvarande videon. Om ett nummer anges, hoppar man istället vidare till videon med det nummret i kön
+`!queue` - Visar helt enkelt kön
+`!pause` - Pausar/unpausar videon
+`!clear` - Rensar hela kön
+`!stop` - Videon avslutas, kön rensas, och jag lämnar kanalen.
+
+---------------------------------------------------------------
+
+Och lite mer övriga eastereggs ;). Botten är WIP, så fler features är påväg! Om du har några önskemål eller tips, hör av dig till Twix.
