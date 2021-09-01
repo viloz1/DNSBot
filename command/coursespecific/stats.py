@@ -31,4 +31,5 @@ async def stats(ctx, course):
         round(rate, 2)) + "%**.", inline=False)
     embedVar.add_field(name="Senaste ordinarie tentan", value="Tentan " + entry.get('date') + " hade följande betygsfördelning: \n**U**: " + str(u) + "\n**3**: "
                                                               + str(three) + "\n" + "**4**: " + str(four) + "\n**5**: " + str(five), inline=False)
+    embedVar.add_field(name="Länk till tenta.davebay", value = "https://tenta.davebay.net/course/" + course)
     await ctx.channel.send(embed=embedVar)
