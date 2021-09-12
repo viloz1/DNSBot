@@ -24,3 +24,8 @@ def getCache(env):
     jsonText = json.load(f)
     f.close()
     return jsonText
+
+def updateCache(env, cache):
+    with open(env["DB_PATH"] + '/musicCache.json', "w") as outfile:
+        outfile.write(json.dumps(cache))
+    return

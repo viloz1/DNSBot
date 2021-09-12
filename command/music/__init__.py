@@ -45,18 +45,26 @@ class Music(commands.Cog):
     players = {}
     env = dict
 
+
     @tasks.loop(minutes=10)
     async def clearCache(self):
         print("Clearing cache...")
+        deleteList = []
         cache = helpers.getCache(self.env)
         for id, lastPlayed in cache.items():
-            if time.time() - lastPlayed > 172800:  # 48h
+            if time.time() - lastPlayed > 3: #172800:  # 48h
                 try:
                     print("Removing temp/" + id + ".opus")
                     os.remove("temp/" + id + ".opus")
+                    deleteList.append(id)
                 except:
                     print("Error: can't remove id " + id)
                     pass
+        
+        for entry in deleteList:
+            del cache[entry]
+            
+        helpers.updateCache(self.env, cache)
         print("Cache cleared!")
 
     @tasks.loop(seconds=2)

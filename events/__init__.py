@@ -1,6 +1,7 @@
 from events.onMessageEvents.__init__ import *
 from command.music.__init__ import *
 from events.mainMessage import *
+from events.errorHandlers import *
 
 class Events(commands.Cog):
     def __init__(self, bot, config, env):
@@ -17,5 +18,6 @@ class Events(commands.Cog):
         await mainMessage(self)
 
         print("Ready!")
+    
 
 

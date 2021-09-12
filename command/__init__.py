@@ -1,5 +1,7 @@
 import command.coursespecific.stats
 import command.random.seal
+import command.errorHandlers
+
 from discord.ext import commands
 
 class Commands(commands.Cog):
@@ -15,3 +17,7 @@ class Commands(commands.Cog):
     @commands.command()
     async def stats(self,ctx,course):
         await command.coursespecific.stats.stats(ctx, course)
+
+    @commands.Cog.listener()
+    async def on_command_error(self, ctx: commands.Context, error: commands.CommandError):
+       await command.errorHandlers.onCommandError(self, ctx, error)
